@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Bolum>
+
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p><a class="btn btn-info" asp-action="Create">Bolum Ekle</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+               Bolum Adı
+            </th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BolumAd)
+            </td>
+            <td>
+                <a href="/Bolum/Update/?bolumId=@item.Id" class="btn btn-success">Güncelle</a>
+                <a href="/Bolum/Delete/?bolumId=@item.Id" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

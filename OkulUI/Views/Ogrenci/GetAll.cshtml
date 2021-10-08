@@ -1,0 +1,57 @@
+﻿@model OgrenciListModel
+
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a class="btn btn-info" asp-action="Create" asp-controller="Ogrenci">Öğrenci Ekle</a>
+<p align="right" position: absolute; width: 300px;>Öğrenci: @Model.Ogrenciler.Count</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Öğrenci Adı</th>
+            <th> Ögrenci Soyadı</th>
+            <th>Ögrenci Yaş</th>
+            <th>Ögrenci Cinsiyet</th>
+            <th>Ögretmen Ad</th>
+            <th>Ögretmen Soyadı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    @{int i = 0; }
+    <tbody>
+        @foreach (var item in Model.Ogrenciler)
+        {
+            <tr>
+                <td>
+                    @{i += 1;} @i
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OgrenciAd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OgrenciSoyad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OgrenciYas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OgrenciCinsiyet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OgretmenAd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OgretmenSoyad)
+                </td>
+                <td>
+                    <a href="/Ogrenci/Update/?OgrenciId=@item.OgrenciId" class="btn btn-success">Güncelle</a>
+                    <a href="/Ogrenci/Delete/?OgrenciId=@item.OgrenciId" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

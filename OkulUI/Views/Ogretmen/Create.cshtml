@@ -1,0 +1,51 @@
+﻿@model OgretmenCreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Ogretmen Ekle</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Bölüm Adı</label>
+                @Html.DropDownListFor(m => m.Ogretmen.BolumId, (List<SelectListItem>)ViewBag.Bolumler, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Ogretmen.Ad" class="control-label"></label>
+                <input asp-for="Ogretmen.Ad" class="form-control" />
+                <span asp-validation-for="Ogretmen.Ad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ogretmen.Soyad" class="control-label"></label>
+                <input asp-for="Ogretmen.Soyad" class="form-control" />
+                <span asp-validation-for="Ogretmen.Soyad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ogretmen.DogumTarihi" class="control-label"></label>
+                <input type="date" asp-for="Ogretmen.DogumTarihi" class="form-control" />
+                <span asp-validation-for="Ogretmen.DogumTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ogretmen.Cinsiyet" class="control-label"></label>
+                <input asp-for="Ogretmen.Cinsiyet" class="form-control" />
+                <span asp-validation-for="Ogretmen.Cinsiyet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-info" asp-action="GetAll">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

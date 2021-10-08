@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Entities.Dtos.OgretmenOgrenciSayisiDto>
+
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    <a class="btn btn-info" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Adı
+            </th>
+            <th>
+                Soyadı
+            </th>
+            <th>
+                Yaşı
+            </th>
+            <th>
+                Cinsiyet
+            </th>
+            <th>
+                Ögrenci Sayisi
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OgretmenId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OgretmenAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OgretmenSoyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cinsiyet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OgrenciSayisi)
+            </td>
+            <td>
+                <a href="/Ogretmen/Update/?ogretmenId=@item.OgretmenId" class="btn btn-success">Güncelle</a>
+                <a href="/Ogretmen/Delete/?ogretmenId=@item.OgretmenId" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
